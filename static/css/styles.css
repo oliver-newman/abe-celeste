@@ -1,0 +1,42 @@
+.btn:focus {
+  color: white;
+  outline: none;
+}
+
+div.survey-form {
+  display: none;
+}
+
+ul.vertical-radios {
+  padding-left: 5px;
+  list-style: none;
+}
+
+ul.vertical-radios li {
+  padding-bottom: 5px;
+}
+
+ul.vertical-radios li input {
+  height: 20px;
+  width: 20px;
+}
+
+ul.horizontal-radios {
+  list-style: none;
+}
+
+ul.horizontal-radios li {
+  display: inline-block;
+  margin-right: 60px;
+}
+
+ul.horizontal-radios li input {
+  height: 20px;
+  width: 20px;
+  display: block;
+}
+
+ul.horizontal-radios label {
+  text-align: center;
+  display: block;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friendliness</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body class="container">
+  <h1>Friendliness Survey</h1>
+  <form method="post" action="/">
+    <div id="initial-form">
+      <label>Survey Administrator</label>
+      <ul class="vertical-radios">
+        <li><input type="radio" name="admin" value="Abe"> Abe</li>
+        <li><input type="radio" name="admin" value="Celeste"> Celeste</li>
+      </ul>
+
+      <p><label>Location</label><input type="text" name="location" class="form-control"></p>
+
+      <p><label>Age</label><input type="number" name="subject-age" class="form-control"></p>
+
+      <label>Gender</label>
+      <ul class="vertical-radios">
+        <li><input type="radio" name="subject-gender" value="M"> Male</li>
+        <li><input type="radio" name="subject-gender" value="F"> Female</li>
+        <li><input type="radio" name="subject-gender" value="O"> Other</li>
+      </ul>
+    </div>
+
+    {% for i in range(10) %}
+      <div id="form{{ i }}" class="survey-form">
+        <div class="image"></div>
+        <p>How likely is this person to engage in active conversation with you?</p>
+        <ul class="horizontal-radios">
+          <li>Least likely</li>
+          <li><input type="radio" name="answer{{ i }}" value="1"><label>1</label></li>
+          <li><input type="radio" name="answer{{ i }}" value="2"><label>2</label></li>
+          <li><input type="radio" name="answer{{ i }}" value="3"><label>3</label></li>
+          <li><input type="radio" name="answer{{ i }}" value="4"><label>4</label></li>
+          <li><input type="radio" name="answer{{ i }}" value="5"><label>5</label></li>
+          <li>Most likely</li>
+        </ul>
+      </div>
+    {% endfor %}
+  </form>
+
+  <button id="next-button" type="button" class="btn btn-primary">Next</button>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="static/js/survey.js"></script>
+</body>
+</html>
