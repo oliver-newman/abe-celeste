@@ -17,6 +17,10 @@
 }
 
 /* other styles */
+.container {
+  max-width: 800px;
+}
+
 h1 {
   text-align: center;
 }
