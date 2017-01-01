@@ -2,6 +2,36 @@
 const SET_A = [true, false, false, true, false, true, true, true, false, false];
 
 
+$(function () {
+  $("#submit-button").attr("disabled", true);
+  const using_set_a = $("input:radio[name='set_name']:checked").val() == "A";
+
+  for (let i = 0; i < 10; i++) {
+    const phone_present = using_set_a ? SET_A[i] : !SET_A[i];
+    const dir = phone_present ? "phone" : "no_phone";
+    $(`#image${i}`).append(`<img src="static/images/${dir}/${i}.jpg">`);
+    if (phone_present) {
+      $(`#phone${i}`).prop("checked", true);
+      $(`#no-phone${i}`).prop("checked", false);
+    }
+    else {
+      $(`#phone${i}`).prop("checked", false);
+      $(`#no-phone${i}`).prop("checked", true);
+    }
+  }
+  
+  $('#initial-form input').on("change", checkInitialForm);
+  $('#initial-form select').on("change", checkInitialForm);
+
+  $("#next-button").click(function () {
+    $("#initial-form").hide();
+    console.log("original listener fired");
+    $("#next-button").unbind();
+    showQuestion(0);
+  });
+});
+
+
 // Enables "next" button if initial form is completed
 function checkInitialForm() {
   let initialFormCompleted = true; // Assume that it is completed
@@ -36,35 +66,6 @@ function checkInitialForm() {
 }
 
 
-$(function () {
-  $("#submit-button").attr("disabled", true);
-  const using_set_a = false;
-
-  for (let i = 0; i < 10; i++) {
-    const phone_present = using_set_a ? SET_A[i] : !SET_A[i];
-    const dir = phone_present ? "phone" : "no_phone";
-    $(`#image${i}`).append(`<img src="static/images/${dir}/${i}.jpg">`);
-    if (phone_present) {
-      $(`#phone${i}`).prop("checked", true);
-      $(`#no-phone${i}`).prop("checked", false);
-    }
-    else {
-      $(`#phone${i}`).prop("checked", false);
-      $(`#no-phone${i}`).prop("checked", true);
-    }
-  }
-  
-  $('#initial-form input').on("change", checkInitialForm);
-  $('#initial-form select').on("change", checkInitialForm);
-
-  $("#next-button").click(function () {
-    $("#initial-form").hide();
-    console.log("original listener fired");
-    $("#next-button").unbind();
-    showQuestion(0);
-  });
-});
-
 function showQuestion(num) {
   // Show image for set amount of time
   $("#next-button").hide();
@@ -73,7 +74,7 @@ function showQuestion(num) {
     $(`#image${num}`).hide();
     $(`#question${num}`).show();
     $('#next-button').show();
-  }, 3000);
+  }, 1000);
 
   // Show question with multiple choice answers
   $("#next-button").unbind();

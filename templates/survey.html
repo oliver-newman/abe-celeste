@@ -10,6 +10,17 @@
   <h1>Friendliness Survey</h1>
   <form method="post" action="/">
     <div id="initial-form">
+      <!-- <div class="hidden-input-container"> -->
+      <div>
+        {% if set_name == 'A' %}
+          <input type="radio" name="set_name" value="A" checked="checked">
+          <input type="radio" name="set_name" value="B">
+        {% else %}
+          <input type="radio" name="set_name" value="A">
+          <input type="radio" name="set_name" value="B" checked="checked">
+        {% endif %}
+      </div>
+
       <label>Survey Administrator</label>
       <ul class="vertical-radios">
         <li><input type="radio" name="admin" value="Abe"> Abe</li>
@@ -22,6 +33,7 @@
 
       <p>
         <label>Age</label><select name="subject_age" class="form-control">
+          <option disabled selected value="">-- Select --</option>
           <option value="0-9">0-10</option>
           <option value="10-19">10-19</option>
           <option value="20-29">20-29</option>
@@ -65,11 +77,11 @@
     {% endfor %}
 
     <div class="submit-container" id="submit-container">
-      <input type="submit" value="Submit" class="btn btn-primary btn-block" id="submit-button">
+      <input type="submit" value="Submit" class="btn btn-primary btn-block" id="submit-button" disabled="true">
     </div>
   </form>
 
-  <button id="next-button" type="button" class="btn btn-primary btn-block">Next</button>
+  <button id="next-button" type="button" class="btn btn-primary btn-block" disabled="true">Next</button>
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
