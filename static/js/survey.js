@@ -1,9 +1,45 @@
 // true if phone, false if no phone
 const SET_A = [true, false, false, true, false, true, true, true, false, false];
 
+
+// Enables "next" button if initial form is completed
+function checkInitialForm() {
+  let initialFormCompleted = true; // Assume that it is completed
+
+  // Check every input in the initial form - not a very nice way to do this
+  // but whatever
+
+  // Administrator radiogroup
+  if (!$("#initial-form input[name='admin']:checked").val()) {
+    initialFormCompleted = false;
+  }
+
+  // Gender radiogroup
+  if (!$("#initial-form input[name='subject_gender']:checked").val()) {
+    initialFormCompleted = false;
+  }
+
+  // Age selector
+  if (!$("#initial-form select[name='subject_age']").val()) {
+    initialFormCompleted = false;
+  }
+
+  // Text inputs
+  $("#initial-form input:text").each(function () {
+    if ($(this).val() == "") {
+      initialFormCompleted = false;
+    }
+  });
+
+  // Set disabled status of button based on inputs
+  $("#next-button").attr("disabled", !initialFormCompleted);
+}
+
+
 $(function () {
   $("#submit-button").attr("disabled", true);
   const using_set_a = false;
+
   for (let i = 0; i < 10; i++) {
     const phone_present = using_set_a ? SET_A[i] : !SET_A[i];
     const dir = phone_present ? "phone" : "no_phone";
@@ -17,6 +53,9 @@ $(function () {
       $(`#no-phone${i}`).prop("checked", true);
     }
   }
+  
+  $('#initial-form input').on("change", checkInitialForm);
+  $('#initial-form select').on("change", checkInitialForm);
 
   $("#next-button").click(function () {
     $("#initial-form").hide();
@@ -34,7 +73,7 @@ function showQuestion(num) {
     $(`#image${num}`).hide();
     $(`#question${num}`).show();
     $('#next-button').show();
-  }, 0);
+  }, 3000);
 
   // Show question with multiple choice answers
   $("#next-button").unbind();
