@@ -74,7 +74,7 @@ function showQuestion(num) {
     $(`#image${num}`).hide();
     $(`#question${num}`).show();
     $('#next-button').show();
-  }, 1000);
+  }, 3000);
 
   // Show question with multiple choice answers
   $("#next-button").unbind();

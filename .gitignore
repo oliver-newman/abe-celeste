@@ -1,5 +1,6 @@
 __pycache__/
+*.pyc
 venv
 *.swp
 .DS_Store
-*.csv
+friendliness_data.csv
