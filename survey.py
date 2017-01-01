@@ -8,20 +8,22 @@ app = Flask(__name__)
 @app.route('/', methods=['GET','POST'])
 def survey():
     if request.method == 'POST':
-        time = str(dt.now())
+        date = str(dt.now().date())
+        time = str(dt.now().time())
         admin = request.form['admin']
         location = request.form['location']
-        subject_id = randrange(999999)
+        subject_id = randrange(999999999)
+        subject_name = request.form['subject_name']
         subject_age = request.form['subject_age']
         subject_gender = request.form['subject_gender']
+
         with open('friendliness_data.csv', 'a', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',')
             for i in range(10):
-                # TODO: might need to use explicit 'true'/'false' here
-                # phone = 'Yes' if request.form['phone{}'.format(i)] else 'No'
-                phone = 'Phone'
+                phone = request.form['phone{}'.format(i)]
                 answer = request.form['answer{}'.format(i)]
-                writer.writerow([subject_id, subject_age, subject_gender, time,
-                                 location, admin, i, phone, answer])
+                writer.writerow([subject_id, subject_age, subject_gender,
+                                 subject_name, date, time, location, admin, i,
+                                 phone, answer])
 
     return render_template('survey.html')

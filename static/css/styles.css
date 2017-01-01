@@ -11,8 +11,12 @@
   display: none;
 }
 
-/* other styles */
+/* always invisible - for user by backend */
+.hidden-input-container {
+  display: none;
+}
 
+/* other styles */
 h1 {
   text-align: center;
 }
