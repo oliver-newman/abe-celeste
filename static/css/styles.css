@@ -1,10 +1,25 @@
+/* stuff that starts out invisible */
+.image-container { /* picture for each question */
+  display: none;
+}
+
+.question-container { /* question and choices for each question */
+  display: none;
+}
+
+.submit-container {
+  display: none;
+}
+
+/* other styles */
+
+h1 {
+  text-align: center;
+}
+
 .btn:focus {
   color: white;
   outline: none;
-}
-
-div.survey-form {
-  display: none;
 }
 
 ul.vertical-radios {
@@ -23,6 +38,7 @@ ul.vertical-radios li input {
 
 ul.horizontal-radios {
   list-style: none;
+  padding-left: 0px;
 }
 
 ul.horizontal-radios li {
@@ -39,4 +55,12 @@ ul.horizontal-radios li input {
 ul.horizontal-radios label {
   text-align: center;
   display: block;
+}
+
+.image-container {
+  text-align: center;
+}
+
+.image-container img {
+  height: 700px;
 }

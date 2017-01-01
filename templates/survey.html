@@ -18,34 +18,38 @@
 
       <p><label>Location</label><input type="text" name="location" class="form-control"></p>
 
-      <p><label>Age</label><input type="number" name="subject-age" class="form-control"></p>
+      <p><label>Age</label><input type="number" name="subject_age" class="form-control"></p>
 
       <label>Gender</label>
       <ul class="vertical-radios">
-        <li><input type="radio" name="subject-gender" value="M"> Male</li>
-        <li><input type="radio" name="subject-gender" value="F"> Female</li>
-        <li><input type="radio" name="subject-gender" value="O"> Other</li>
+        <li><input type="radio" name="subject_gender" value="M"> Male</li>
+        <li><input type="radio" name="subject_gender" value="F"> Female</li>
+        <li><input type="radio" name="subject_gender" value="O"> Other</li>
       </ul>
     </div>
 
     {% for i in range(10) %}
-      <div id="form{{ i }}" class="survey-form">
-        <div class="image"></div>
+      <div class="image-container" id="image{{ i }}"></div>
+      <div class="question-container" id="question{{ i }}"</div>
         <p>How likely is this person to engage in active conversation with you?</p>
         <ul class="horizontal-radios">
-          <li>Least likely</li>
+          <li>Very unlikely</li>
           <li><input type="radio" name="answer{{ i }}" value="1"><label>1</label></li>
           <li><input type="radio" name="answer{{ i }}" value="2"><label>2</label></li>
           <li><input type="radio" name="answer{{ i }}" value="3"><label>3</label></li>
           <li><input type="radio" name="answer{{ i }}" value="4"><label>4</label></li>
           <li><input type="radio" name="answer{{ i }}" value="5"><label>5</label></li>
-          <li>Most likely</li>
+          <li>Very likely</li>
         </ul>
       </div>
     {% endfor %}
+
+    <div class="submit-container" id="submit-container">
+      <input type="submit" value="Submit" class="btn btn-primary btn-block" id="submit-button">
+    </div>
   </form>
 
-  <button id="next-button" type="button" class="btn btn-primary">Next</button>
+  <button id="next-button" type="button" class="btn btn-primary btn-block">Next</button>
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
