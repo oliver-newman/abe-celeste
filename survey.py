@@ -7,7 +7,14 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET','POST'])
 def survey():
-    if request.method == 'POST':
+    if request.method == 'GET':
+        # Render new survey, using set A or B (opposite of the last time the
+        # survey was given)
+        with open('last_set_name.txt', 'r') as f:
+            last_set_name = f.read()[0]
+            set_name = 'A' if last_set_name == 'B' else 'B'
+            return render_template('survey.html', set_name=set_name)
+    elif request.method == 'POST':
         set_name = request.form['set_name']
         date = str(dt.now().date())
         time = str(dt.now().time())
@@ -31,9 +38,5 @@ def survey():
         with open('last_set_name.txt', 'w') as f:
             f.write(set_name)
 
-    # Render new survey, using set A or B (opposite of the last time the survey
-    # was given)
-    with open('last_set_name.txt', 'r') as f:
-        last_set_name = f.read()[0]
-        set_name = 'A' if last_set_name == 'B' else 'B'
-        return render_template('survey.html', set_name=set_name)
+        return redirect('/')
+
