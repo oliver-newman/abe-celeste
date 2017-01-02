@@ -6,6 +6,9 @@ $(function () {
   $("#submit-button").attr("disabled", true);
   const using_set_a = $("input:radio[name='set_name']:checked").val() == "A";
 
+  // Sample image - TODO: change file
+  $("#image-1").append("<img src='static/images/no_phone/9.jpg'>");
+
   for (let i = 0; i < 10; i++) {
     const phone_present = using_set_a ? SET_A[i] : !SET_A[i];
     const dir = phone_present ? "phone" : "no_phone";
@@ -24,10 +27,10 @@ $(function () {
   $('#initial-form select').on("change", checkInitialForm);
 
   $("#next-button").click(function () {
+    $("#next-button").html("Next");
     $("#initial-form").hide();
-    console.log("original listener fired");
     $("#next-button").unbind();
-    showQuestion(0);
+    showQuestion(-1);
   });
 });
 
@@ -86,10 +89,16 @@ function showQuestion(num) {
   // Move on to next question, or end survey if all questions have been done
   $("#next-button").click(function() {
     $(`#question${num}`).hide();
-    if (num < 9) {
+    if (num < 0) {
+      $("#next-button").html("Begin Survey");
+      $("#next-button").click(function() {
+        $("#next-button").html("Next");
+        showQuestion(num + 1);
+      });
+    } else if (num < 9) {
+    $("#next-button").html("Next");
       showQuestion(num + 1);
-    }
-    else {
+    } else {
       $("#next-button").hide();
       $("#submit-container").show();
       $("#submit-button").attr("disabled", false);
