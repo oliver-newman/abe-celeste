@@ -1,3 +1,8 @@
+body {
+  max-height: 100%;
+  font-size: 3em;
+}
+
 /* stuff that starts out invisible */
 .image-container { /* picture for each question */
   display: none;
@@ -18,7 +23,7 @@
 
 /* other styles */
 .container {
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 h1 {
