@@ -5,6 +5,7 @@ body {
 
 /* stuff that starts out invisible */
 .image-container { /* picture for each question */
+  height: 80%;
   display: none;
 }
 
