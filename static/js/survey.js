@@ -6,8 +6,8 @@ $(function () {
   $("#submit-button").attr("disabled", true);
   const using_set_a = $("input:radio[name='set_name']:checked").val() == "A";
 
-  // Sample image - TODO: change file
-  $("#image-1").append("<img src='static/images/no_phone/9.jpg'>");
+  // Sample image
+  $("#image-1").append("<img src='static/images/sample.jpg'>");
 
   for (let i = 0; i < 10; i++) {
     const phone_present = using_set_a ? SET_A[i] : !SET_A[i];
