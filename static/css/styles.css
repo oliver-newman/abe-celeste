@@ -10,10 +10,12 @@ body {
 }
 
 .question-container { /* question and choices for each question */
+  padding-top: 200px;
   display: none;
 }
 
 .submit-container {
+  padding-top: 400px;
   display: none;
 }
 
@@ -34,6 +36,14 @@ h1 {
 .btn:focus {
   color: white;
   outline: none;
+}
+
+.answer {
+  text-align: center;
+}
+
+.scale-label {
+  text-align: center;
 }
 
 ul.vertical-radios {

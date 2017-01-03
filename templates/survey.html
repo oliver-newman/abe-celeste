@@ -64,14 +64,14 @@
           How likely are you to receive this person's undivided attention while
           telling them your story?
         </p>
-        <ul class="horizontal-radios" id="answer{{ i }}-options">
-          <li>Very unlikely</li>
+        <ul class="horizontal-radios answer" id="answer{{ i }}-options">
+          <li class="scale-label">👎<br>Unlikely</li>
           <li><input type="radio" name="answer{{ i }}" value="1"><label>1</label></li>
           <li><input type="radio" name="answer{{ i }}" value="2"><label>2</label></li>
           <li><input type="radio" name="answer{{ i }}" value="3"><label>3</label></li>
           <li><input type="radio" name="answer{{ i }}" value="4"><label>4</label></li>
           <li><input type="radio" name="answer{{ i }}" value="5"><label>5</label></li>
-          <li>Very likely</li>
+          <li class="scale-label">👍<br>Likely</li>
         </ul>
         <div class="hidden-input-container">
           <input type="radio" id="phone{{ i }}" name="phone{{ i }}" value="phone">

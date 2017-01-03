@@ -91,8 +91,10 @@ function showQuestion(num) {
     $(`#question${num}`).hide();
     if (num < 0) {
       $("#next-button").html("Begin Survey");
+      $("#next-button").css("margin-top", "400px");
       $("#next-button").click(function() {
         $("#next-button").html("Next");
+        $("#next-button").css("margin-top", "0px");
         showQuestion(num + 1);
       });
     } else if (num < 9) {
